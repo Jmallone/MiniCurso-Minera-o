@@ -14,7 +14,9 @@ public class CommitVisitor implements org.repodriller.scm.CommitVisitor {
     @Override
     public void process(SCMRepository scmr, Commit commit, PersistenceMechanism pm) {
         
-        pm.write(commit.getHash(), 
+        pm.write(
+                scmr.getLastDir(),
+                commit.getHash(), 
                 commit.getAuthor().getName(), 
                 commit.getAuthor().getEmail()
         );
